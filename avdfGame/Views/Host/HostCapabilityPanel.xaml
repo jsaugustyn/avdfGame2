@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="avdfGame.HostCapabilityPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:avdfGame"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="600" Background="Black">
+
+    <UserControl.Resources>
+
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="DeepSkyBlue" />
+        </Style>
+
+        <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#000000" />
+            <Setter Property="Foreground" Value="DeepSkyBlue" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="BorderBrush" Value="DeepSkyBlue"/>
+            <Setter Property="BorderThickness" Value="1"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="0" Background="{TemplateBinding Background}" BorderBrush="DeepSkyBlue" BorderThickness="1">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF282828" />
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" TargetName="border" Value="Black"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                                <Setter Property="TextElement.Foreground" TargetName="MyContentPresenter" Value="#FF838383"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF505050" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Name="mainGrid">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Label Name="voteStatusLabel" Grid.Row="0" Background="#FF1E1E1E" HorizontalContentAlignment="Center" Foreground="LightGray" Content="Voting Stopped (Click Start Voting to go live)"/>
+
+        <ScrollViewer Name="capabilityScrollViewer" Grid.Row="1" Background="#FF1E1E1E" Margin="10">
+            <local:HorizontalBarChartControl x:Name="hostBarChart" Margin="20"/>
+        </ScrollViewer>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Center">
+            <Button Name="startVoteButton" Style="{StaticResource buttonStyle}" Height="30" Width="150" FontSize="18" Click="startVoteButton_Click" Content="START VOTING" Margin="0,0,10,0"/>
+            <Button Name="stopVoteButton" Style="{StaticResource buttonStyle}" Height="30" Width="150" FontSize="18" Click="stopVoteButton_Click" Content="STOP VOTING" Margin="0,0,10,0"/>
+            <Button Name="showVoteButton" Style="{StaticResource buttonStyle}" Height="30" Width="150" FontSize="18" Click="showVoteButton_Click"  Content="DISPLAY VOTES"/>
+        </StackPanel>
+        
+    </Grid>
+</UserControl>

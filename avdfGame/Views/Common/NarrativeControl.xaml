@@ -1,0 +1,79 @@
+﻿<UserControl x:Class="avdfGame.NarrativeControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:avdfGame"
+             mc:Ignorable="d" 
+             Background="Black">
+    <UserControl.Resources>
+        <Style x:Name="labelStyle" TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="DeepSkyBlue" />
+        </Style>
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="Background" Value="LightGray" />
+        </Style>
+    </UserControl.Resources>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="0">
+            <Label>Capability:</Label>
+            <Label Name="capabilityLabel" Foreground="LightGray"/>
+        </StackPanel>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Right" Orientation="Horizontal">
+            <Label Padding="5,5,0,5">created by</Label>
+            <Label Name="playerName" Foreground="LightGray">NAME</Label>
+        </StackPanel>
+
+        <StackPanel Orientation="Vertical" Grid.Row="1" Name="controlsStackPanel">
+            <local:NarrativeElementControl x:Name="personaControl" Margin="10" Tag="PERSONA">
+                <local:NarrativeElementControl.ElementName>PERSONA</local:NarrativeElementControl.ElementName>
+                <local:NarrativeElementControl.ElementDetail>Who is this story about? A company commander? A rifleman?</local:NarrativeElementControl.ElementDetail>
+                <local:NarrativeElementControl.CharacterCount>0</local:NarrativeElementControl.CharacterCount>
+                <local:NarrativeElementControl.MaxCharacters>140</local:NarrativeElementControl.MaxCharacters>
+            </local:NarrativeElementControl>
+
+            <local:NarrativeElementControl x:Name="situationControl" Margin="10" Tag="SITUATION">
+                <local:NarrativeElementControl.ElementName>SITUATION</local:NarrativeElementControl.ElementName>
+                <local:NarrativeElementControl.ElementDetail>What is the situation leading up to the DECISIVE POINT? What is your persona thinking, doing, feeling?</local:NarrativeElementControl.ElementDetail>
+                <local:NarrativeElementControl.CharacterCount>0</local:NarrativeElementControl.CharacterCount>
+                <local:NarrativeElementControl.MaxCharacters>300</local:NarrativeElementControl.MaxCharacters>
+                <local:NarrativeElementControl.TextHeight>60</local:NarrativeElementControl.TextHeight>
+            </local:NarrativeElementControl>
+
+            <local:NarrativeElementControl x:Name="crisisControl" Margin="10" Tag="DECISIVE POINT">
+                <local:NarrativeElementControl.ElementName>DECISIVE POINT</local:NarrativeElementControl.ElementName>
+                <local:NarrativeElementControl.ElementDetail>Something important happens that changes this situation, creatng a need for your capability. What is it?</local:NarrativeElementControl.ElementDetail>
+                <local:NarrativeElementControl.CharacterCount>0</local:NarrativeElementControl.CharacterCount>
+                <local:NarrativeElementControl.MaxCharacters>300</local:NarrativeElementControl.MaxCharacters>
+                <local:NarrativeElementControl.TextHeight>60</local:NarrativeElementControl.TextHeight>
+            </local:NarrativeElementControl>
+
+            <local:NarrativeElementControl x:Name="conopControl" Margin="10" Tag="CAPABILITY CONOP">
+                <local:NarrativeElementControl.ElementName>CAPABILITY CONOP</local:NarrativeElementControl.ElementName>
+                <local:NarrativeElementControl.ElementDetail>How does your capability come into play? How is it used?</local:NarrativeElementControl.ElementDetail>
+                <local:NarrativeElementControl.CharacterCount>0</local:NarrativeElementControl.CharacterCount>
+                <local:NarrativeElementControl.MaxCharacters>300</local:NarrativeElementControl.MaxCharacters>
+                <local:NarrativeElementControl.TextHeight>60</local:NarrativeElementControl.TextHeight>
+            </local:NarrativeElementControl>
+
+            <local:NarrativeElementControl x:Name="outcomeControl" Height="200" Margin="10" Tag="RESOLUTION">
+                <local:NarrativeElementControl.ElementName>RESOLUTION</local:NarrativeElementControl.ElementName>
+                <local:NarrativeElementControl.ElementDetail>What is the outcome? How did your capability help at the DECISIVE POINT?</local:NarrativeElementControl.ElementDetail>
+                <local:NarrativeElementControl.CharacterCount>0</local:NarrativeElementControl.CharacterCount>
+                <local:NarrativeElementControl.MaxCharacters>300</local:NarrativeElementControl.MaxCharacters>
+                <local:NarrativeElementControl.TextHeight>60</local:NarrativeElementControl.TextHeight>
+            </local:NarrativeElementControl>
+
+        </StackPanel>
+
+        
+
+    </Grid>
+</UserControl>

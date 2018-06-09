@@ -1,0 +1,67 @@
+﻿<UserControl x:Class="avdfGame.GameStartControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:avdfGame"
+             mc:Ignorable="d" 
+             Background="Black">
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type UserControl}">
+            <Setter Property="Background" Value="#000000" />
+        </Style>
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="DeepSkyBlue" />
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#000000" />
+            <Setter Property="Foreground" Value="DeepSkyBlue" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="BorderBrush" Value="DeepSkyBlue"/>
+            <Setter Property="BorderThickness" Value="1"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border CornerRadius="0" Background="{TemplateBinding Background}" BorderBrush="DeepSkyBlue" BorderThickness="1">
+                            <Grid>
+                                <Path x:Name="PathIcon"/>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF282828" />
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF505050" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Image Source="pack://application:,,,/avdfGame;component/Resources/circuit-backdrop.jpg" Grid.ColumnSpan="2" Stretch="Fill" Opacity=".5"/>
+
+        <StackPanel Grid.Column="0" Orientation="Vertical" VerticalAlignment="Center">
+            <Image Source="pack://application:,,,/avdfGame;component/Resources/AVDF LOGO.png" Width="200" Grid.Column="1"/>
+            <TextBlock Name="welcomeText" VerticalAlignment="Center" TextAlignment="Center" Width="400" Margin="0,20,0,0" TextWrapping="Wrap" Foreground="LightGray" FontSize="24">
+            Welcome to the Asymmetric Vision/Decide Faster Wargame
+            </TextBlock>
+
+            <Button Name="hostJoinButton" Click="hostJoinButton_Click" BorderBrush="DeepSkyBlue" Width="200" Height="50" Margin="0,50,0,20" FontSize="16">JOIN AS FACILITATOR</Button>
+            <Button Name="playerJoinButton" Click="playerJoinButton_Click" BorderBrush="DeepSkyBlue" Width="200" Height="50" FontSize="16">JOIN AS PLAYER</Button>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,181 @@
+﻿<UserControl x:Class="avdfGame.HostGameControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:avdfGame"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="800" Background="Black" >
+
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TabItem}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TabItem}">
+                        <Border
+                            x:Name="Spacer"
+                            Width="Auto"
+                            Height="Auto"
+                            Padding="0 0 0 2"
+                            Margin="0 0 0 0"
+                            BorderBrush="Transparent"
+                            BorderThickness="0">
+                            <Border
+                                x:Name="Border"
+                                Width="Auto"
+                                Height="50"
+                                Background="Gray"
+                                BorderBrush="DarkGray"
+                                BorderThickness="0,0,0,0"
+                                VerticalAlignment="Bottom">
+                                    <ContentPresenter
+                                        x:Name="ContentSite"
+                                        TextElement.Foreground="Black"
+                                        VerticalAlignment="Center"
+                                        HorizontalAlignment="Center"
+                                        ContentSource="Header"
+                                        Margin="0"
+                                        Width="Auto"
+                                        Height="Auto" />
+                            </Border>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver"
+                                     Value="True">
+                                <Setter TargetName="Border"
+                                        Property="Background"
+                                        Value="LightGray" />
+                            </Trigger>
+                            <Trigger Property="IsSelected"
+                                     Value="True">
+                                <Setter TargetName="Border"
+                                        Property="Background"
+                                        Value="deepskyblue" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style TargetType="{x:Type TabControl}">
+            <Setter Property="Template">
+            <Setter.Value>
+
+                <ControlTemplate TargetType="{x:Type TabControl}">
+                    <Grid KeyboardNavigation.TabNavigation="Local">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <TabPanel x:Name="HeaderPanel"
+                              Grid.Column="0"
+                              Panel.ZIndex="1"
+                              Margin="0,0,0,0"
+                              IsItemsHost="True"
+                              KeyboardNavigation.TabIndex="1"
+                              Background="Transparent" />
+
+                        <Border x:Name="Border"
+                            Grid.Column="1"
+                            BorderThickness=".5"
+                            KeyboardNavigation.TabNavigation="Local"
+                            KeyboardNavigation.DirectionalNavigation="Contained"
+                            KeyboardNavigation.TabIndex="2">
+
+                            <Border.Background>
+                                <SolidColorBrush Color="Black"/>
+                            </Border.Background>
+
+                            <Border.BorderBrush>
+                                <SolidColorBrush Color="LightGray"/>
+                            </Border.BorderBrush>
+
+                            <ContentPresenter x:Name="PART_SelectedContentHost" Margin="4" ContentSource="SelectedContent" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type Label}">
+        <Setter Property="Foreground" Value="DeepSkyBlue" />
+    </Style>
+
+    <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+        <Setter Property="Background" Value="#000000" />
+        <Setter Property="Foreground" Value="DeepSkyBlue" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="SnapsToDevicePixels" Value="True" />
+        <Setter Property="BorderBrush" Value="DeepSkyBlue"/>
+        <Setter Property="BorderThickness" Value="1"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border x:Name="border" CornerRadius="0" Background="{TemplateBinding Background}" BorderBrush="DeepSkyBlue" BorderThickness="1">
+                        <Grid>
+                            <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                        </Grid>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#FF282828" />
+                        </Trigger>
+
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" TargetName="border" Value="Black"/>
+                            <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                            <Setter Property="TextElement.Foreground" TargetName="MyContentPresenter" Value="#FF838383"/>
+                        </Trigger>
+
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#FF505050" />
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    </UserControl.Resources>
+
+    <Grid>
+        <TabControl Name="gameTabs" TabStripPlacement="Left" Margin="20">
+            <TabItem Header="Start Session" Name="settingsTab">
+                <local:HostGameEntryControl x:Name="hostGameEntryControl" ></local:HostGameEntryControl>
+            </TabItem>
+            <TabItem Header="Vignette" Name="choosevignetteTab" Visibility="Hidden">
+                <Grid>
+                    <local:HostVignettePanel x:Name="hostVignettePanel"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Capabilities" Width="150" Name="capabilityVoteTab" Visibility="Hidden">
+                <local:HostCapabilityPanel x:Name="hostCapabilityPanel"/>
+            </TabItem>
+            <!--TabItem Header="Assign Capabilities" Name="assignCapabilityTab" Visibility="Hidden">
+                <local:HostAssignVignettePanel x:Name="hostAssignCapabilityPanel"/>
+            </TabItem>
+            <TabItem Header="Narratives" Name="hostNarrativesTab" Visibility="Hidden">
+                <local:HostNarrativePanel x:Name="hostNarrativePanel"></local:HostNarrativePanel>
+            </TabItem-->
+            <TabItem Header="Assessments" Name="hostAssessmentTab" Visibility="Hidden">
+                <local:HostPaletteControl x:Name="hostPaletteControl" Margin="20"/>
+            </TabItem>
+            <TabItem Header="End Session" Name="hostEndSessionTab" Visibility="Hidden">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" Margin="20">
+                    <TextBlock Foreground="DeepSkyBlue" FontSize="24" TextWrapping="Wrap" TextAlignment="Center">
+                        Click the button below to end the session.
+                        <LineBreak/>
+                        <Span FontSize="16">YOU CANNOT UNDO THIS ACTION, so make sure you are ready to end!</Span>
+                    </TextBlock>
+                    <Button Name="endSessionButton" Click="endSessionButton_Click" Style="{StaticResource buttonStyle}" Width="300" Height="40" Content="END SESSION" Margin="0,50,0,0"/>
+                </StackPanel>
+            </TabItem>
+        </TabControl>
+            
+    </Grid>
+</UserControl>

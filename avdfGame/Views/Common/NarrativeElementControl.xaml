@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="avdfGame.NarrativeElementControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:avdfGame"
+             mc:Ignorable="d" 
+             Background="Black">
+    <UserControl.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Foreground" Value="DeepSkyBlue" />
+        </Style>
+    </UserControl.Resources>
+    
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock VerticalAlignment="Bottom" Grid.Column="0">
+                    <TextBlock.Inlines>
+                        <Run x:Name="fieldName" FontSize="16" FontWeight="DemiBold" Text="FIELD"/>
+                        <Run Name="fieldDetail" FontSize="10" Text="Some descriptive text"/>
+                    </TextBlock.Inlines>
+                </TextBlock>
+                <TextBlock VerticalAlignment="Bottom" Grid.Column="1" HorizontalAlignment="Right">
+                    <TextBlock.Inlines>
+                        <Run Name="charCount" FontSize="10" Text="140"/>
+                        <Run FontSize="10" Text="/"/>
+                        <Run Name="maxChars" FontSize="10" Text="140"/>
+                    </TextBlock.Inlines>
+                </TextBlock>
+            </Grid>
+            <TextBox Name="contentTextBox" TextChanged="contentTextBox_TextChanged" TextWrapping="Wrap" AcceptsReturn="True" Height="Auto"/>
+        </StackPanel>
+
+    </Grid>
+</UserControl>

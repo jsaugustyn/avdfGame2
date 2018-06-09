@@ -1,0 +1,381 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{23078D80-7DDC-43BE-8877-6326A847F81A}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>avdfGame</RootNamespace>
+    <AssemblyName>avdfGame</AssemblyName>
+    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SC.Api, Version=1.0.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCloud.ClientAPI.1.0.33\lib\SC.Api.dll</HintPath>
+    </Reference>
+    <Reference Include="SC.API.ComInterop, Version=1.0.33.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCloud.ClientAPI.1.0.33\lib\SC.API.ComInterop.dll</HintPath>
+    </Reference>
+    <Reference Include="SC.Framework, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpCloud.ClientAPI.1.0.33\lib\SC.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="DragCanvas.cs" />
+    <Compile Include="Models\Capability.cs" />
+    <Compile Include="Models\Narrative.cs" />
+    <Compile Include="Models\NarrativeElement.cs" />
+    <Compile Include="Models\SessionData.cs" />
+    <Compile Include="PaletteContentWindow2.xaml.cs">
+      <DependentUpon>PaletteContentWindow2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SharpCloudInterfaceManager.cs" />
+    <Compile Include="Views\Player\PlayerPaletteControl.xaml.cs">
+      <DependentUpon>PlayerPaletteControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Player\SemanticDifferentialScaleControl.xaml.cs">
+      <DependentUpon>SemanticDifferentialScaleControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\_old\CapabilityCardControl - Copy.xaml.cs">
+      <DependentUpon>CapabilityCardControl - Copy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\NarrativeDetailWindow.xaml.cs">
+      <DependentUpon>NarrativeDetailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\PaletteContentWindow.xaml.cs">
+      <DependentUpon>PaletteContentWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\PaletteControl.xaml.cs">
+      <DependentUpon>PaletteControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\PaletteItemWidget.xaml.cs">
+      <DependentUpon>PaletteItemWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Host\HorizontalBarChartControl.xaml.cs">
+      <DependentUpon>HorizontalBarChartControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Host\HorizontalBarChartElement.xaml.cs">
+      <DependentUpon>HorizontalBarChartElement.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Host\HostAssignVignettePanel.xaml.cs">
+      <DependentUpon>HostAssignVignettePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Host\HostPaletteControl.xaml.cs">
+      <DependentUpon>HostPaletteControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Host\HostVignettePanel.xaml.cs">
+      <DependentUpon>HostVignettePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Host\NarrativeWidget.xaml.cs">
+      <DependentUpon>NarrativeWidget.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Player\PlayerGameControl.xaml.cs">
+      <DependentUpon>PlayerGameControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\CapabilityCardControl.xaml.cs">
+      <DependentUpon>CapabilityCardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Host\HostCapabilityPanel.xaml.cs">
+      <DependentUpon>HostCapabilityPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Host\HostNarrativePanel.xaml.cs">
+      <DependentUpon>HostNarrativePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\NarrativeControl.xaml.cs">
+      <DependentUpon>NarrativeControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\NarrativeElementControl.xaml.cs">
+      <DependentUpon>NarrativeElementControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Player\PlayerCapabilityPanel.xaml.cs">
+      <DependentUpon>PlayerCapabilityPanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Player\PlayerNarrativeCapabilityChoicePanel.xaml.cs">
+      <DependentUpon>PlayerNarrativeCapabilityChoicePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Player\PlayerNarrativePanel.xaml.cs">
+      <DependentUpon>PlayerNarrativePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Player\PlayerPostSubmissionUI.xaml.cs">
+      <DependentUpon>PlayerPostSubmissionUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Player\PlayerVignettePanel.xaml.cs">
+      <DependentUpon>PlayerVignettePanel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Host\HostGameEntryControl.xaml.cs">
+      <DependentUpon>HostGameEntryControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GameData.cs" />
+    <Compile Include="ViewModels\GameViewModel.cs" />
+    <Compile Include="ViewModels\PlayerViewModel.cs" />
+    <Compile Include="Views\Common\GameStartControl.xaml.cs">
+      <DependentUpon>GameStartControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Host\HostLobby.xaml.cs">
+      <DependentUpon>HostLobby.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PlayerModel.cs" />
+    <Compile Include="Models\NetworkModel.cs" />
+    <Compile Include="Views\Player\PlayerLobby.xaml.cs">
+      <DependentUpon>PlayerLobby.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Host\HostGameControl.xaml.cs">
+      <DependentUpon>HostGameControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SharedDisplay\SharedCapabilityViewControl.xaml.cs">
+      <DependentUpon>SharedCapabilityViewControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Vignette.cs" />
+    <Compile Include="Views\Host\VignetteXpsControl.xaml.cs">
+      <DependentUpon>VignetteXpsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Common\VignetteViewerControl.xaml.cs">
+      <DependentUpon>VignetteViewerControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SharedDisplay\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Page Include="PaletteContentWindow2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Player\PlayerPaletteControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Player\SemanticDifferentialScaleControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\_old\CapabilityCardControl - Copy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Common\NarrativeDetailWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Common\PaletteContentWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Common\PaletteControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Common\PaletteItemWidget.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\HorizontalBarChartControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\HorizontalBarChartElement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\HostAssignVignettePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\HostPaletteControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\HostVignettePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\NarrativeWidget.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Player\PlayerGameControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Common\CapabilityCardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\HostCapabilityPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\HostNarrativePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Common\NarrativeControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Common\NarrativeElementControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Player\PlayerCapabilityPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Player\PlayerNarrativeCapabilityChoicePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Player\PlayerNarrativePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Player\PlayerPostSubmissionUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Player\PlayerVignettePanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\HostGameEntryControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Common\GameStartControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\HostLobby.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Views\Player\PlayerLobby.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\HostGameControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SharedDisplay\SharedCapabilityViewControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Host\VignetteXpsControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Common\VignetteViewerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SharedDisplay\Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\thumbs-up-empty.png" />
+    <Resource Include="Resources\thumbs-up-filled.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\assumptions.png" />
+    <Resource Include="Resources\benefits.png" />
+    <Resource Include="Resources\questions.png" />
+    <Resource Include="Resources\risks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\AVDF LOGO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\circuit-backdrop.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

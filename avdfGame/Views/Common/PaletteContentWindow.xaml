@@ -1,0 +1,22 @@
+﻿<Window x:Class="avdfGame.PaletteContentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:avdfGame"
+        mc:Ignorable="d"
+        Title="PaletteContentWindow" WindowStyle="None" WindowStartupLocation="CenterScreen" Height="350" Width="300">
+    <Grid>
+        <StackPanel Orientation="Vertical">
+            <Label Name="quadrantName" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Content="QUADRANT" FontSize="16" Background="Black" Foreground="White"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="10,10,10,0">
+                <Label Name="currChars" HorizontalContentAlignment="Right" Padding="0" VerticalContentAlignment="Center" Content="0"/>
+                <Label HorizontalContentAlignment="Right" Padding="0" VerticalContentAlignment="Center" Content="/"/>
+                <Label Name="maxChars" HorizontalContentAlignment="Right" Padding="0" VerticalContentAlignment="Center" Content="300"/>
+            </StackPanel>
+            <TextBox Name="contentTextBox" Margin="10,0,10,0" Height="175" AcceptsReturn="True" TextWrapping="Wrap" TextChanged="contentTextBox_TextChanged"/>
+            <Button Name="submitButton" Margin="10,20,10,10" Click="submitButton_Click" Content="SUBMIT" Width="200" Height="30"/>
+            <Button Name="cancelButton" Margin="10,0,10,0" Click="cancelButton_Click" IsCancel="True" Content="CANCEL" Width="200" Height="30"/>
+        </StackPanel>
+    </Grid>
+</Window>

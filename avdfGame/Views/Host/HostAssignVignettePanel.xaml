@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="avdfGame.HostAssignVignettePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:avdfGame"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" Background="Black">
+
+    <UserControl.Resources>
+
+        <Style TargetType="{x:Type Label}">
+            <Setter Property="Foreground" Value="DeepSkyBlue" />
+        </Style>
+
+        <Style x:Key="buttonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Background" Value="#000000" />
+            <Setter Property="Foreground" Value="DeepSkyBlue" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="SnapsToDevicePixels" Value="True" />
+            <Setter Property="BorderBrush" Value="DeepSkyBlue"/>
+            <Setter Property="BorderThickness" Value="1"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Border x:Name="border" CornerRadius="0" Background="{TemplateBinding Background}" BorderBrush="DeepSkyBlue" BorderThickness="1">
+                            <Grid>
+                                <ContentPresenter x:Name="MyContentPresenter" Content="{TemplateBinding Content}" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0" />
+                            </Grid>
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#FF282828" />
+                            </Trigger>
+
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" TargetName="border" Value="Black"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="#FFADB2B5"/>
+                                <Setter Property="TextElement.Foreground" TargetName="MyContentPresenter" Value="#FF838383"/>
+                            </Trigger>
+
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#FF505050" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <TextBlock TextWrapping="Wrap" Width="400" VerticalAlignment="Center" Foreground="LightGray">
+                    Now that the players have voted on the capabilities they think are the most relevant for the vignette, have each of them choose one capability they are most interested in. Once everyone has chosen, click the button below.
+            </TextBlock>
+
+            <Button Name="openNarrativesButton" Click="openNarrativesButton_Click" Style="{StaticResource buttonStyle}" Width="300" Height="40" Content="GET NARRATIVES" Margin="20"/>
+
+        </StackPanel>
+    </Grid>
+</UserControl>

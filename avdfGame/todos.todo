@@ -1,0 +1,139 @@
+Capabilities:
+  Player:
+      ✔ Player capability voting @done (18-06-03 16:09)
+      ✔ implement player UI and event handlers DONE @done (18-06-03 16:09)
+      ✔ handle player message to host DONE @done (18-06-03 16:09)
+  Host:
+      ✔ handle incoming message DONE @done (18-06-03 16:11)
+      ✔ update data DONE @done (18-06-03 16:11)
+      ✔ update UI DONE @done (18-06-03 16:11)
+      ✔ add "vote tally" UI element to display number of votes cast DONE @done (18-06-03 16:11)
+      ✔ add variable to track number of votes cast DONE @done (18-06-03 16:11)
+      ☐ block voting with error message if nVotes > maxVotes
+      ☐ have host send maxVotes
+      ☐ add UI element to host to set maxVotes on settings panel
+      ☐ save capability votes on display
+      ✔ votes not beng saved as part of the narratives...check that it is being updated properly @done (18-06-04 14:11)
+
+Capabilities to narratives:
+    ✔ Choose capabilities to do narratives for DONE (will be handled via moderated discussion) @done (18-06-03 16:11)
+    ✔ Populate narratives list on Assign tab (NA) @done (18-06-03 16:11)
+    ✔ Assign narratives @done (18-06-03 16:11)
+      option 1: do it through the UI 
+        (pro - more control, con - more programming)
+      option 2: handle it through discussion, players can write as many narratives as they want, choosing the capability on a drop-down or list
+        
+
+General:
+  ✔ Fix path stuff for loading vignettes and capabilities (and saving data) [use System.Windows.Forms.Application.StartupPath] @done (18-06-04 16:53)
+  ☐ breaks if there are duplicate user names....probably because server relies on name matching
+        have server check if name already exists, and if so, bounce back raising an error message
+  ✔ add a "session name" field to the host's settings menu & send it to new players for data saving purposes @done (18-06-09 09:26)
+  ✔ shared display - buttons not changing views @done (18-06-04 16:30)
+  ✔ Host has some funky routing on the capabilities panel. shoould be: @done (18-06-09 09:26)
+          1. open voting
+          2. close voting
+          3. display votes
+          4. move to narratives
+  ☐ saving data - should trigger a save every time a change is made
+      on player - capability vote, narrative submitted assessment submitted
+      on host - vote received, narrative received, assessment received
+
+Vignettes:
+  Host:
+    ✔ Host should have a vignetteViewerControl that displays the vignette (see VignetteXpsControl line 119), but it never seems to get displayed...add a panel to the hostGameControl to visualize it alongside the sharedDisplay @done (18-06-04 16:19)
+    ✔ Host - "use vignette" button does not update sharedDisplay or send messages to players @done (18-06-04 15:10)
+  Player:
+    ✔ Get vignette from host - DONE @done (18-06-03 16:11)
+    ✔ Display vignette - DONE @done (18-06-03 16:11)
+  General:
+    ☐ drawing tools [if time allows]
+    ☐ save inkcanvas [if time allows]
+    
+
+Narratives:
+  Host:
+    ✔ make sure save appends, not overwrites @done (18-06-04 14:02
+    ✔ end narratives button that opens assessment and prevents players from submitting more narratives @done (18-06-04 15:05)
+    ✔ UI for displaying narrative detail on host and shared display @done (18-06-04 12:19)
+    Capability assignment:
+      ✔ UI  DONE @done (18-06-03 16:12)
+      ✔ Messages to players to set assignments  DONE @done (18-06-03 16:12)
+    Narratives received:
+      ✔ Receive from player  DONE @done (18-06-03 16:12)
+      ✔ Save to data file DONE @done (18-06-03 16:12)
+      ✔ Display on host UI @done (18-06-04 09:35)  
+      ✔ Display on sharedDisplay @done (18-06-04 09:35)
+      ✔ Narrative widget - display detail window on button click @done (18-06-04 11:00)
+  Player:
+    ✔ Receive assigment   DONE @done (18-06-03 16:12)
+    ✔ Narrative UI  DONE @done (18-06-03 16:12)
+    ✔ Submit to host  DONE @done (18-06-03 16:12)
+    ✔ on submit, clear form and show post-submit screen that includes a "make another narrative" button @done (18-06-04 13:18)    
+    ✔ not getting the right capability @critical @done (18-06-04 13:29)
+    ✔ make sure save appends, not overwrites @done (18-06-04 14:20)  
+    ☐ display submitted narratives and enable editing????? [if time allows]
+
+Assessment:
+  ✔ update card content @done (18-06-05 21:17)
+  ✔ mouse over display @done (18-06-05 21:17)
+  ✔ send content @done (18-06-09 09:25)
+  ✔ receive content and display on palette @done (18-06-09 09:25)
+  ☐ save data on all changes
+  ✔ player version of the UI @done (18-06-09 09:25)
+  ☐ add capability name to panel
+  ☐ on host, add end assessment button that stops players from adding more content and goes to end round screen
+  ☐ add question on game-changing potential
+      ✔ make control @done (18-06-09 09:27)
+      ☐ add control to UI
+      ☐ handle control interaction on player (update data, send to host, and save) and host (receive data and save)
+  ✔ fill color based on user name! so you can easily see who submitted what @done (18-06-09 09:25)
+  ✔ update host on player palette item change (move, change text) @done (18-06-09 13:12)
+  ✔ update player on host changes to palette (add item, move item, change text) @done (18-06-09 13:12)
+
+
+
+Game/Session Management:
+  ✔ game info (enduring throughout the wargame; create game data structure) @done (18-06-09 09:26)
+  ✔ session info (initialized for each turn/session) @done (18-06-09 09:26)
+  ✔ start session (create session data structure) @done (18-06-09 09:26)
+  ✔ save session data (function, called whenever data updates) @done (18-06-09 09:26)
+  ✔ end session (write data one more time) @done (18-06-09 09:26)
+Game
+  Session
+    Narratives
+    Capability votes
+    Assessment data
+
+
+During vignette block - capture key factors for AVDF 
+
+Session length: 90 minutes
+Review vignette & ID critical factors for AVDF (20)
+Review capabilities in light fo the vignette, vote, discuss votes (anything surprising?) (20)
+ID benefits, risks, assumptions, questions, discuss (30)
+Rate potential impact (10)
+Final thoughts (10)
+
+Wednesday
+0900-1000 intro stuff
+1000-1030 get into groups, intros, process check, ready to go?
+1030-1200 Round 1
+1200-1330 Lunch
+1330-1500 Round 2
+1500-1530 Break
+1530-1600 Day 1 hotwash
+
+Thursday
+0830-1000 Round 3
+1000-1015 Break
+1015-1145 Round 4
+1145-1300 Lunch/prep for outbriefs
+1300-1345 Group outbriefs (what vignettes did you look at, which capabilities emerged as key, major ideas/insights)
+1345-1430 Hot wash & closing thoughts
+
+
+
+Vignettes:
+  add surveillance as a mission - mentioned by Dr. Reago
+

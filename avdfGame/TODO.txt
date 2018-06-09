@@ -1,0 +1,53 @@
+﻿Capabilities
+	Player capabilities view
+		    Player capability voting DONE
+			implement player UI and event handlers DONE
+			handle player message to host DONE
+			on host:
+				handle incoming message DONE
+				update data DONE
+				update UI DONE
+		add "vote tally" UI element to display number of votes cast DONE
+			add variable to track number of votes cast DONE
+		block voting with error message if nVotes > maxVotes
+			have host send maxVotes
+			add UI element to host to set maxVotes on settings panel
+	Host
+		Choose capabilities to do narratives for DONE (will be handled via moderated discussion)
+			Populate narratives list on Assign tab (NA)
+		Assign narratives
+			option 1: do it through the UI 
+				(pro - more control, con - more programming)
+			option 2: handle it through discussion, players can write as many narratives as they want, choosing the capability on a drop-down or list
+				
+
+General
+	Fix path stuff for loading cignettes and capabilities (and saving data)
+	add a "session name" field to the host's settings menu & send it to new players for data saving purposes
+
+Vignettes
+	Host
+		Host should have a vignetteViewerControl that displays the vignette (see VignetteXpsControl line 119), but it never seems to get displayed...add a panel to the hostGameControl to visualize it alongside the sharedDisplay
+		Host - "use vignette" button does not update sharedDisplay or send messages to players
+	Player
+		Get vignette from host - DONE
+		Display vignette - DONE
+		
+
+Narratives
+	Host
+		Capability assignment  DONE
+			UI  DONE
+			Messages to players to set assignments  DONE
+		Narratives received
+			Receive from player  DONE
+			Save to data file DONE
+	***		Display on host UI  
+			Display on sharedDisplay
+	Player
+		Receive assigment   DONE
+		Narrative UI  DONE
+		Submit to host  DONE
+
+
+Assessment
